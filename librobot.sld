@@ -1,0 +1,33 @@
+(define-library (jakelyz librobot)
+  (export get-mouse-position-x
+	  get-mouse-position-y
+	  drag-mouse-smooth
+          move-mouse
+	  move-mouse-smooth
+	  move-mouse-relative
+	  move-mouse-relative-smooth
+	  mouse-scroll
+	  mouse-click
+	  mouse-toggle)
+  (import (core)
+	  (ypsilon c-types)
+	  (ypsilon c-ffi))
+  (begin
+    ;; shared lib
+    (define librobot
+      (load-shared-object "librobot.dylib"))
+    
+    ;; mouse api functions
+    (define get-mouse-position-x (c-function long-long GetMousePositionX ()))
+    (define get-mouse-position-y (c-function long-long GetMousePositionY ()))
+    (define drag-mouse-smooth (c-function void MoveMouseSmooth (long-long long-long double double long-long)))
+    (define move-mouse (c-function void MoveMouse (long-long long-long)))
+    (define move-mouse-smooth (c-function void MoveMouseSmooth (long-long long-long double double long-long)))
+    (define move-mouse-relative (c-function void MoveMouseRelative (long-long long-long)))
+    (define move-mouse-relative-smooth (c-function void MoveMouseRelativeSmooth (long-long long-long double double long-long)))
+    (define mouse-scroll (c-function void ScrollMouse (long-long long-long)))
+    (define mouse-click (c-function void MouseClick (void*)))
+    (define mouse-toggle (c-function void Mousetoggle (void* void*)))
+    
+    ) ;; end begin
+  ) ;; end define-library
