@@ -13,7 +13,6 @@
 	  (ypsilon c-types)
 	  (ypsilon c-ffi))
   (begin
-    ;; shared lib
     (define librobot
       (load-shared-object "librobot.dylib"))
     
@@ -27,7 +26,7 @@
     (define move-mouse-relative-smooth (c-function void MoveMouseRelativeSmooth (long-long long-long double double long-long)))
     (define mouse-scroll (c-function void ScrollMouse (long-long long-long)))
     (define mouse-click (c-function void MouseClick (void*)))
-    (define mouse-toggle (c-function void Mousetoggle (void* void*)))
+    (define mouse-toggle (c-function void MouseToggle (void* void*)))
     
     ) ;; end begin
   ) ;; end define-library
