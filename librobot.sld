@@ -14,7 +14,13 @@
 	  (ypsilon c-ffi))
   (begin
     (define librobot
-      (load-shared-object "librobot.dylib"))
+      (let ((sysname (architecture-feature 'sysname)))
+	(cond ((string-contains sysname "darwin")
+	       (load-shared-object "librobot.dylib"))
+	      ((string-contains sysname "linux")
+	       (load-shared-object "librobot.so"))
+	      (else
+	       (assertion-violation 'load-shared-object "can not load librobot, unepexcted operating system")))))
     
     ;; mouse api functions
     (define get-mouse-position-x (c-function long-long GetMousePositionX ()))
