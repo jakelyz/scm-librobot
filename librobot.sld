@@ -20,7 +20,7 @@
 	      ((string-contains sysname "linux")
 	       (load-shared-object "librobot.so"))
 	      (else
-	       (assertion-violation 'load-shared-object "can not load librobot, unepexcted operating system")))))
+	       (assertion-violation 'load-shared-object "can not load librobot, unexpected operating system")))))
     
     ;; mouse api functions
     (define get-mouse-position-x (c-function long-long GetMousePositionX ()))
