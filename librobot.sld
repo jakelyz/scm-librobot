@@ -8,7 +8,11 @@
 	  move-mouse-relative-smooth
 	  mouse-scroll
 	  mouse-click
-	  mouse-toggle)
+	  mouse-toggle
+	  keyboard-type-string
+	  keyboard-key-press
+	  keyboard-key-down
+	  keyboard-key-up)
   (import (core)
 	  (ypsilon c-types)
 	  (ypsilon c-ffi))
@@ -33,6 +37,12 @@
     (define mouse-scroll (c-function void ScrollMouse (long-long long-long)))
     (define mouse-click (c-function void MouseClick (void*)))
     (define mouse-toggle (c-function void MouseToggle (void* void*)))
+
+    ;; keyboard api functions
+    (define keyboard-type-string (c-function void TypeString (void*)))
+    (define keyboard-key-press (c-function void KeyPress (void*)))
+    (define keyboard-key-down (c-function void KeyDown (void*)))
+    (define keyboard-key-up (c-function void KeyUp (void*)))
     
     ) ;; end begin
   ) ;; end define-library
