@@ -12,7 +12,9 @@
 	  keyboard-type-string
 	  keyboard-key-press
 	  keyboard-key-down
-	  keyboard-key-up)
+	  keyboard-key-up
+	  process-find-pids
+	  process-activate)
   (import (core)
 	  (ypsilon c-types)
 	  (ypsilon c-ffi))
@@ -43,6 +45,10 @@
     (define keyboard-key-press (c-function void KeyPress (void*)))
     (define keyboard-key-down (c-function void KeyDown (void*)))
     (define keyboard-key-up (c-function void KeyUp (void*)))
+
+    ;; process api
+    (define process-find-pids (c-function void* FindPids (void*)))
+    (define process-activate (c-function void ProcessActivate (long-long)))
 
     ) ;; end begin
   ) ;; end define-library
