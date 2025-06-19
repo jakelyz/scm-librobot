@@ -84,6 +84,27 @@ func MouseToggle(btn, state *C.char) {
 	robotgo.Toggle(CtoGoStr(btn), CtoGoStr(state))
 }
 
+// Keyboard API
+
+//export TypeString
+func TypeString(str *C.char) {
+	robotgo.TypeStr(CtoGoStr(str))
+}
+
+//export KeyPress
+func KeyPress(key *C.char) {
+	robotgo.KeyPress(CtoGoStr(key))
+}
+
+//export KeyDown
+func KeyDown(key *C.char) {
+	robotgo.KeyDown(CtoGoStr(key))
+}
+
+//export KeyUp
+func KeyUp(key *C.char) {
+	robotgo.KeyUp(CtoGoStr(key))
+}
 
 // Main
 func main () {}
