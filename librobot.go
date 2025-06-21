@@ -106,5 +106,26 @@ func KeyUp(key *C.char) {
 	robotgo.KeyUp(CtoGoStr(key))
 }
 
+// Process API
+
+//export FindPids
+func FindPids(process *C.char) int {
+	pids, _ := robotgo.FindIds(CtoGoStr(process))
+	if len(pids) > 0 {
+		return pids[0]
+	}
+	return -1
+}
+
+//export GetPid
+func GetPid() int {
+	return robotgo.GetPid()
+}
+
+//export ProcessActivate
+func ProcessActivate(pid int) {
+	robotgo.ActivePid(pid)
+}
+
 // Main
 func main () {}
