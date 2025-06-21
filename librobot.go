@@ -117,6 +117,11 @@ func FindPids(process *C.char) int {
 	return -1
 }
 
+//export GetPid
+func GetPid() int {
+	return robotgo.GetPid()
+}
+
 //export ProcessActivate
 func ProcessActivate(pid int) {
 	robotgo.ActivePid(pid)

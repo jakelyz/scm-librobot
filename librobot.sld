@@ -13,8 +13,9 @@
 	  keyboard-key-press
 	  keyboard-key-down
 	  keyboard-key-up
-	  process-find-pids
-	  process-activate)
+	  find-pid-by-name
+	  get-active-pid
+	  focus-pid)
   (import (core)
 	  (ypsilon c-types)
 	  (ypsilon c-ffi))
@@ -47,8 +48,9 @@
     (define keyboard-key-up (c-function void KeyUp (void*)))
 
     ;; process api
-    (define process-find-pids (c-function void* FindPids (void*)))
-    (define process-activate (c-function void ProcessActivate (long-long)))
+    (define find-pid-by-name (c-function void* FindPids (void*)))
+    (define get-active-pid (c-function long-long GetPid()))
+    (define focus-pid (c-function void ProcessActivate (long-long)))
 
     ) ;; end begin
   ) ;; end define-library
